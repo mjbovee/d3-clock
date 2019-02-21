@@ -30,3 +30,24 @@ pi = Math.PI
 scaleSecs = d3.scaleLinear().domain([0, 59 + 999/1000]).range([0, 2 * pi])
 scaleMins = d3.scaleLinear().domain([0, 59 + 59/60]).range([0, 2 * pi])
 scaleHours = d3.scaleLinear().domain([0, 11 + 59/60]).range([0, 2 * pi])
+
+var vis, clockGroup
+
+vis = d3.select('body')
+    .append('svg')
+    .attr('width', width)
+    .attr('height', height)
+
+clockGroup = vis.append('g')
+    .attr('transform', 'translate(' + offSetX + ',' + offSetY + ')')
+
+clockGroup.append('circle')
+    .attr('r', 80).attr('fill', 'none')
+    .attr('class', 'clock outercircle')
+    .attr('stroke', 'black')
+    .attr('stroke-width', 2)
+
+clockGroup.append('circle')
+    .attr('r', 4)
+    .attr('fill', 'black')
+    .attr('class', 'clock innercircle')
